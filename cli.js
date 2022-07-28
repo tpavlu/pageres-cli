@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 'use strict';
+console.log("Env", process.env)
 const updateNotifier = require('update-notifier');
 const subarg = require('subarg');
 const sudoBlock = require('sudo-block');
