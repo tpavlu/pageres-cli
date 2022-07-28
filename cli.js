@@ -63,17 +63,14 @@ const cli = meow(`
 	  --format=<string>        Image format
 	  --css=<string>           Apply custom CSS
 	  --darkMode               Emulate preference of dark color scheme
-	  --chromiumPath           Override the default chromium path on run
 
 	<url> can also be a local file path
 `, options);
 
 async function generate(args, options) {
-        const launchOptions = !options.chromiumPath ? {} : { executablePath: options.chromiumPath }
-        console.log("Launch Options", launchOptions)
 	const pageres = new Pageres({
 		incrementalName: !options.overwrite,
-                launchOptions,
+                launchOptions: { executablePath: process.env['PUPPETEER_EXECUTABLE_PATH'] },
 	}).dest(process.cwd());
 
 	for (const argument of args) {
