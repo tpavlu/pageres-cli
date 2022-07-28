@@ -69,6 +69,7 @@ const cli = meow(`
 
 async function generate(args, options) {
         const launchOptions = !options.chromiumPath ? {} : { executablePath: options.chromiumPath }
+        console.log("Launch Options", launchOptions)
 	const pageres = new Pageres({
 		incrementalName: !options.overwrite,
                 launchOptions,
